@@ -1,7 +1,7 @@
 # Magento 2 MCP Bridge (PriyankJivani_McpBridge)
 
-[![Magento 2.4.x](https://img.shields.io/badge/Magento-2.4.x-orange.svg?logo=magento)](https://business.adobe.com/products/magento/magento-commerce.html)
-[![PHP 8.1 - 8.4 Compatible](https://img.shields.io/badge/PHP-8.1%20%7C%208.2%20%7C%208.3%20%7C%208.4-777BB4.svg?logo=php)](https://www.php.net/)
+[![Magento 2.4.9 Verified](https://img.shields.io/badge/Magento-2.4.9%20Live%20Demo-orange.svg?logo=magento)](http://152.67.31.72/mcp/)
+[![PHP 8.1 - 8.5 Compatible](https://img.shields.io/badge/PHP-8.1%20%7C%208.2%20%7C%208.3%20%7C%208.4%20%7C%208.5-777BB4.svg?logo=php)](https://www.php.net/)
 [![Model Context Protocol](https://img.shields.io/badge/MCP-2024--11--05-blue.svg)](https://modelcontextprotocol.io/)
 [![Composer Package](https://img.shields.io/badge/Composer-priyankjivani%2Fmodule--mcp--bridge-blue.svg?logo=composer)](https://packagist.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -10,6 +10,19 @@
 The official **Magento 2 Model Context Protocol (MCP) Bridge** extension developed by **[Priyank Jivani](https://github.com/priyankjivani123)** (Senior Magento 2 Backend Developer & Architect).
 
 This module securely connects Magento 2 / Adobe Commerce stores with Model Context Protocol (MCP) AI servers, enabling AI clients (such as **Claude Desktop**, **Cursor**, and custom autonomous AI agents) to safely interact with Magento using official **Service Contracts**, **Dependency Injection**, and robust **Role-Based Access Control (RBAC)**.
+
+---
+
+## 🌐 Live Interactive Demonstration
+
+Inspect and test this MCP extension live on our dedicated demonstration server:
+
+* **Interactive MCP Dashboard & Tool Explorer:** [http://152.67.31.72/mcp/](http://152.67.31.72/mcp/)
+* **Live Magento 2 Storefront:** [http://152.67.31.72/](http://152.67.31.72/)
+* **Live Magento 2 Admin Panel:** [http://152.67.31.72/admin/](http://152.67.31.72/admin/)
+  * *Username:* `admin`
+  * *Password:* `PriyankAdmin123!` (Concurrent multi-session enabled for seamless reviewing)
+* **Live Server Stack:** Magento Open Source 2.4.9, PHP 8.5.4 (with OPcache & JIT), MariaDB 11.8.6, OpenSearch 2.18, Redis 8.0.5.
 
 ---
 
@@ -67,8 +80,8 @@ This module securely connects Magento 2 / Adobe Commerce stores with Model Conte
 | **Magento 2.4.4 - 2.4.5-p1** | PHP 8.1 | ✅ Certified | Full service contract compatibility |
 | **Magento 2.4.5-p2 - 2.4.6-pX** | PHP 8.1, PHP 8.2 | ✅ Certified | Tested on 2.4.6-p8 |
 | **Magento 2.4.7 - 2.4.7-pX** | PHP 8.2, PHP 8.3 | ✅ Certified | Tested on 2.4.7-p3 |
-| **Magento 2.4.8 (Roadmap)** | PHP 8.3, PHP 8.4 | 🚀 Forward-Compatible | Strict typing, no implicit nullables |
-| **PHP 8.5 (Upcoming)** | *Pending Adobe Core* | ⏳ Preview / Audited | Codebase compiles cleanly under PHP 8.5 runtime |
+| **Magento 2.4.8** | PHP 8.3, PHP 8.4 | ✅ Certified | Strict typing, no implicit nullables |
+| **Magento 2.4.9 (Live Demo)** | PHP 8.3, PHP 8.4, PHP 8.5 | ✅ Certified & Verified | Live production deployment running on PHP 8.5.4 |
 
 ---
 
