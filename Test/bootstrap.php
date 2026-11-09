@@ -34,10 +34,17 @@ namespace Magento\Framework {
 
 namespace Magento\Framework\Exception {
     if (!class_exists(LocalizedException::class, false)) {
-        class LocalizedException extends \Exception {}
+        class LocalizedException extends \Exception
+        {
+            public function __construct($phrase, ?\Exception $cause = null, int $code = 0)
+            {
+                $msg = is_object($phrase) && method_exists($phrase, 'render') ? $phrase->render() : (string)$phrase;
+                parent::__construct($msg, $code, $cause);
+            }
+        }
     }
     if (!class_exists(NoSuchEntityException::class, false)) {
-        class NoSuchEntityException extends \Exception {}
+        class NoSuchEntityException extends LocalizedException {}
     }
 }
 
@@ -61,10 +68,27 @@ namespace Magento\Store\Model {
     }
 }
 
+namespace Magento\Framework {
+    if (!class_exists(Phrase::class, false)) {
+        class Phrase
+        {
+            private string $text;
+            private array $args;
+            public function __construct($text, array $args = []) {
+                $this->text = (string)$text;
+                $this->args = $args;
+            }
+            public function render(): string { return $this->text; }
+            public function getText(): string { return $this->text; }
+            public function __toString(): string { return $this->render(); }
+        }
+    }
+}
+
 namespace {
     if (!function_exists('__')) {
         function __($text, ...$args) {
-            return (string)$text;
+            return new \Magento\Framework\Phrase($text, $args);
         }
     }
 

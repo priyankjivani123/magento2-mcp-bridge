@@ -82,6 +82,8 @@ class McpDispatcher implements McpDispatcherInterface
                 'magento_list_products' => $this->productHandler->listProducts($params),
                 'magento_get_product' => $this->productHandler->getProduct($params),
                 'magento_search_products' => $this->productHandler->searchProducts($params),
+                'magento_create_product' => $this->productHandler->createProduct($params, $dryRun),
+                'magento_update_product' => $this->productHandler->updateProduct($params, $dryRun),
                 'magento_update_product_price' => $this->productHandler->updatePrice($params, $dryRun),
                 'magento_delete_product' => $this->productHandler->deleteProduct($params, $confirm),
 
@@ -93,23 +95,40 @@ class McpDispatcher implements McpDispatcherInterface
                 // Customer
                 'magento_list_customers' => $this->customerHandler->listCustomers($params),
                 'magento_get_customer' => $this->customerHandler->getCustomer($params),
+                'magento_create_customer' => $this->customerHandler->createCustomer($params, $dryRun),
 
                 // Inventory
                 'magento_get_stock' => $this->inventoryHandler->getStock($params),
                 'magento_update_stock' => $this->inventoryHandler->updateStock($params, $dryRun),
 
-                // Category & CMS
+                // Category
                 'magento_get_category' => $this->categoryHandler->getCategory($params),
+                'magento_get_category_tree' => $this->categoryHandler->getCategoryTree($params),
+                'magento_create_category' => $this->categoryHandler->createCategory($params, $dryRun),
+
+                // CMS
+                'magento_list_cms_pages' => $this->cmsHandler->listCmsPages($params),
                 'magento_get_cms_page' => $this->cmsHandler->getCmsPage($params),
+                'magento_list_cms_blocks' => $this->cmsHandler->listCmsBlocks($params),
                 'magento_get_cms_block' => $this->cmsHandler->getCmsBlock($params),
 
                 // Store Configuration
                 'magento_get_store_config' => $this->configHandler->getStoreConfig($params),
 
-                // Developer Tools
+                // Developer Tools & Diagnostics
                 'magento_get_version' => $this->devToolsHandler->getVersion(),
                 'magento_get_system_health' => $this->devToolsHandler->getSystemHealth(),
                 'magento_get_php_information' => $this->devToolsHandler->getPhpInformation(),
+                'magento_get_cache_status' => $this->devToolsHandler->getCacheStatus(),
+                'magento_flush_cache', 'magento_clean_cache' => $this->devToolsHandler->cleanCache($params, $dryRun),
+                'magento_get_indexer_status' => $this->devToolsHandler->getIndexerStatus(),
+                'magento_get_cron_status' => $this->devToolsHandler->getCronStatus(),
+                'magento_get_database_health' => $this->devToolsHandler->getDatabaseHealth(),
+                'magento_get_opensearch_health' => $this->devToolsHandler->getOpensearchHealth(),
+                'magento_get_redis_health' => $this->devToolsHandler->getRedisHealth(),
+                'magento_get_store_errors' => $this->devToolsHandler->getStoreErrors($params),
+                'magento_list_modules' => $this->devToolsHandler->listModules(),
+                'magento_generate_store_report' => $this->devToolsHandler->generateStoreReport(),
 
                 // Performance & SEO
                 'magento_analyze_performance' => $this->performanceHandler->analyzePerformance(),
@@ -120,7 +139,7 @@ class McpDispatcher implements McpDispatcherInterface
             };
 
             $response->setSuccess(true);
-            $response->setResult($result);
+            $response->setResult(is_array($result) ? json_encode($result, JSON_UNESCAPED_SLASHES) : (string)$result);
         } catch (\Throwable $e) {
             $response->setSuccess(false);
             $response->setError($e->getMessage());
@@ -137,7 +156,7 @@ class McpDispatcher implements McpDispatcherInterface
         return [
             'status' => 'OK',
             'mcp_bridge' => 'PriyankJivani_McpBridge',
-            'version' => '1.0.0',
+            'version' => '1.0.3',
             'timestamp' => date('c'),
             'protocol' => '2024-11-05'
         ];

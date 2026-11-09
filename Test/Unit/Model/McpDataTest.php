@@ -13,12 +13,14 @@ class McpDataTest extends TestCase
     {
         $request = new McpRequest();
         $request->setAction('magento_list_products');
-        $request->setParams(['limit' => 10, 'page' => 2]);
+        $paramsArray = ['limit' => 10, 'page' => 2];
+        $request->setParams(json_encode($paramsArray));
         $request->setDryRun(true);
         $request->setConfirm(false);
 
         $this->assertEquals('magento_list_products', $request->getAction());
-        $this->assertEquals(['limit' => 10, 'page' => 2], $request->getParams());
+        $this->assertEquals(json_encode($paramsArray), $request->getParams());
+        $this->assertEquals($paramsArray, $request->getParsedParams());
         $this->assertTrue($request->isDryRun());
         $this->assertFalse($request->isConfirm());
     }
