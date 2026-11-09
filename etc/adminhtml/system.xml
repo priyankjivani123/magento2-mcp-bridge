@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="priyankjivani" translate="label" sortOrder="350">
+            <label>Priyank Jivani Extensions</label>
+        </tab>
+        <section id="mcp_bridge" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>MCP AI Bridge</label>
+            <tab>priyankjivani</tab>
+            <resource>PriyankJivani_McpBridge::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable MCP Bridge</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="mode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Operation Mode</label>
+                    <source_model>PriyankJivani\McpBridge\Model\Config\Source\OperationMode</source_model>
+                    <comment>Read-Only restricts AI agents to non-destructive inspection. Read/Write permits authorized updates.</comment>
+                </field>
+                <field id="api_secret" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Secret Bridge Token (Optional Header Auth)</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment>Optional dedicated token for X-MCP-Bridge-Token header.</comment>
+                </field>
+                <field id="audit_logging" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Audit Logging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Logs every tool call to var/log/mcp_audit.log</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

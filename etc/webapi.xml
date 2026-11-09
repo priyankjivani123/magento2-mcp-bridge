@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- MCP Dispatcher Endpoint -->
+    <route url="/V1/mcp/dispatch" method="POST">
+        <service class="PriyankJivani\McpBridge\Api\McpDispatcherInterface" method="dispatch"/>
+        <resources>
+            <resource ref="PriyankJivani_McpBridge::manage"/>
+        </resources>
+    </route>
+    <!-- MCP Health / Ping Endpoint (Public / Token Protected) -->
+    <route url="/V1/mcp/ping" method="GET">
+        <service class="PriyankJivani\McpBridge\Api\McpDispatcherInterface" method="ping"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

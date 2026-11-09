@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="PriyankJivani\McpBridge\Api\McpDispatcherInterface"
+                type="PriyankJivani\McpBridge\Model\McpDispatcher"/>
+    <preference for="PriyankJivani\McpBridge\Api\Data\McpRequestInterface"
+                type="PriyankJivani\McpBridge\Model\Data\McpRequest"/>
+    <preference for="PriyankJivani\McpBridge\Api\Data\McpResponseInterface"
+                type="PriyankJivani\McpBridge\Model\Data\McpResponse"/>
+</config>

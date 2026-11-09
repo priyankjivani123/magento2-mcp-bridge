@@ -1,0 +1,32 @@
+{
+    "name": "priyankjivani/module-mcp-bridge",
+    "description": "Enterprise Model Context Protocol (MCP) Bridge for Magento 2 / Adobe Commerce. Securely connects AI agents (Claude Desktop, Cursor) to Magento service contracts for catalog operations, orders, customers, inventory, developer diagnostics, and performance audits.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Priyank Jivani",
+            "email": "priyankjivani48@gmail.com",
+            "homepage": "https://www.upwork.com/freelancers/priyankjivani",
+            "role": "Senior Magento 2 Backend Developer & Architect"
+        }
+    ],
+    "require": {
+        "php": ">=8.1.0",
+        "magento/framework": ">=103.0.0",
+        "magento/module-catalog": ">=104.0.0",
+        "magento/module-sales": ">=103.0.0",
+        "magento/module-customer": ">=103.0.0",
+        "magento/module-cms": ">=104.0.0",
+        "magento/module-store": ">=101.1.0",
+        "magento/module-webapi": ">=100.4.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "PriyankJivani\\McpBridge\\": ""
+        }
+    }
+}
