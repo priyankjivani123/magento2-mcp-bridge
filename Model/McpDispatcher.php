@@ -66,7 +66,7 @@ class McpDispatcher implements McpDispatcherInterface
     {
         $startTime = microtime(true);
         $action = $request->getAction();
-        $params = $request->getParams();
+        $params = $request->getParsedParams();
         $dryRun = $request->isDryRun();
         $confirm = $request->isConfirm();
 

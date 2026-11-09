@@ -18,15 +18,28 @@ class McpRequest extends DataObject implements McpRequestInterface
         return $this->setData(self::ACTION, $action);
     }
 
-    public function getParams(): array
+    public function getParams(): string
     {
         $params = $this->getData(self::PARAMS);
-        return is_array($params) ? $params : [];
+        return is_string($params) ? $params : (string)json_encode($params ?: []);
     }
 
-    public function setParams(array $params): McpRequestInterface
+    public function setParams(string $params): McpRequestInterface
     {
         return $this->setData(self::PARAMS, $params);
+    }
+
+    public function getParsedParams(): array
+    {
+        $params = $this->getData(self::PARAMS);
+        if (is_array($params)) {
+            return $params;
+        }
+        if (is_string($params)) {
+            $decoded = json_decode($params, true);
+            return is_array($decoded) ? $decoded : [];
+        }
+        return [];
     }
 
     public function isDryRun(): bool
