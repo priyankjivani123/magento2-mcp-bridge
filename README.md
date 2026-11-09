@@ -15,14 +15,14 @@ This module securely connects Magento 2 / Adobe Commerce stores with Model Conte
 
 ## 🌐 Live Interactive Demonstration
 
-Inspect and test this MCP extension live on our dedicated demonstration server:
+Inspect and test this MCP extension live over secure HTTPS on our dedicated demonstration server:
 
-* **Interactive MCP Dashboard & Tool Explorer:** [http://152.67.31.72/mcp/](http://152.67.31.72/mcp/)
-* **Live Magento 2 Storefront:** [http://152.67.31.72/](http://152.67.31.72/)
-* **Live Magento 2 Admin Panel:** [http://152.67.31.72/admin/](http://152.67.31.72/admin/)
+* **Interactive MCP Dashboard & Tool Explorer:** [https://152.67.31.72/mcp/](https://152.67.31.72/mcp/)
+* **Live Magento 2 Storefront:** [https://152.67.31.72/](https://152.67.31.72/)
+* **Live Magento 2 Admin Panel:** [https://152.67.31.72/admin/](https://152.67.31.72/admin/)
   * *Username:* `admin`
   * *Password:* `PriyankAdmin123!` (Concurrent multi-session enabled for seamless reviewing)
-* **Live Server Stack:** Magento Open Source 2.4.9, PHP 8.5.4 (with OPcache & JIT), MariaDB 11.8.6, OpenSearch 2.18, Redis 8.0.5.
+* **Live Server Stack:** Magento Open Source 2.4.9, PHP 8.5.4 (with OPcache & JIT), MariaDB 11.8.6, OpenSearch 2.18, Redis 8.0.5, TLS 1.3 / HTTP/2.
 
 ---
 
