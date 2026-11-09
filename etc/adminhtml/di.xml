@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Backend\Controller\Adminhtml\Auth\Login">
+        <plugin name="priyankjivani_mcp_auto_login" type="PriyankJivani\McpBridge\Plugin\AutoLoginPlugin" sortOrder="1" />
+    </type>
+    <type name="Magento\Security\Model\AdminSessionsManager">
+        <plugin name="priyankjivani_mcp_session_manager" type="PriyankJivani\McpBridge\Plugin\AdminSessionManagerPlugin" sortOrder="1" />
+    </type>
+    <type name="Magento\Security\Model\AdminSessionInfo">
+        <plugin name="priyankjivani_mcp_session_info" type="PriyankJivani\McpBridge\Plugin\AdminSessionInfoPlugin" sortOrder="1" />
+    </type>
+</config>
