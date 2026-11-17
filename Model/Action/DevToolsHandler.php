@@ -40,7 +40,7 @@ class DevToolsHandler
         return [
             'magento_edition' => 'Adobe Commerce / Magento Open Source',
             'magento_version' => '2.4.9',
-            'mcp_bridge_version' => '1.0.3',
+            'mcp_bridge_version' => '1.0.4',
             'php_version' => PHP_VERSION,
             'server_os' => PHP_OS,
             'protocol_version' => '2024-11-05'
@@ -269,7 +269,7 @@ class DevToolsHandler
     {
         return [
             'platform' => 'Magento Open Source 2.4.9 / Adobe Commerce',
-            'bridge' => 'PriyankJivani_McpBridge v1.0.3',
+            'bridge' => 'PriyankJivani_McpBridge v1.0.4',
             'health_score' => 98,
             'system_status' => 'OPTIMAL',
             'opensearch' => 'ONLINE',

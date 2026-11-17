@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.4] - 2026-11-17
+
+### Security
+- **Admin Authentication Hardening**: Completely removed experimental auto-login plugin and admin session interceptors (`Plugin/AutoLoginPlugin.php`, `Plugin/AdminSessionInfoPlugin.php`, `Plugin/AdminSessionManagerPlugin.php`, and `etc/adminhtml/di.xml`).
+- Restored standard Magento 2 Admin credential authentication (`Magento\Backend\Controller\Adminhtml\Auth\Login`), ensuring nobody can bypass the admin login screen without valid admin credentials.
+- Retained native Magento 2 core concurrent admin login support via standard configuration (`admin/security/admin_account_sharing`).
+
+### Fixed
+- Fixed PHPUnit test `McpDataTest::testRequestDataModel` to serialize parameter arrays as JSON strings matching strict typing in `McpRequest::setParams()`.
+- Verified 100% test pass rate across all 59 MCP validation scenarios and PHPUnit unit tests.
+
+---
+
 ## [1.0.3] - 2026-11-09
 
 ### Added

@@ -156,7 +156,7 @@ class McpDispatcher implements McpDispatcherInterface
         return [
             'status' => 'OK',
             'mcp_bridge' => 'PriyankJivani_McpBridge',
-            'version' => '1.0.3',
+            'version' => '1.0.4',
             'timestamp' => date('c'),
             'protocol' => '2024-11-05'
         ];
