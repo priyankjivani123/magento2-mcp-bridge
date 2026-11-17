@@ -4,14 +4,19 @@ declare(strict_types=1);
 namespace PriyankJivani\McpBridge\Model\Action;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\CatalogInventory\Api\StockRegistryInterface;
 
 class InventoryHandler
 {
     private ProductRepositoryInterface $productRepository;
+    private StockRegistryInterface $stockRegistry;
 
-    public function __construct(ProductRepositoryInterface $productRepository)
-    {
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        StockRegistryInterface $stockRegistry
+    ) {
         $this->productRepository = $productRepository;
+        $this->stockRegistry = $stockRegistry;
     }
 
     public function getStock(array $params): array
@@ -21,15 +26,15 @@ class InventoryHandler
             throw new \InvalidArgumentException('Product SKU is required.');
         }
 
+        $stockItem = $this->stockRegistry->getStockItemBySku($sku);
         $product = $this->productRepository->get($sku);
-        $stockItem = $product->getExtensionAttributes() ? $product->getExtensionAttributes()->getStockItem() : null;
 
         return [
             'sku' => $sku,
             'product_id' => (int)$product->getId(),
-            'qty' => $stockItem ? (float)$stockItem->getQty() : 0.0,
-            'is_in_stock' => $stockItem ? (bool)$stockItem->getIsInStock() : false,
-            'manage_stock' => $stockItem ? (bool)$stockItem->getManageStock() : true
+            'qty' => (float)$stockItem->getQty(),
+            'is_in_stock' => (bool)$stockItem->getIsInStock(),
+            'manage_stock' => (bool)$stockItem->getManageStock()
         ];
     }
 
@@ -52,6 +57,11 @@ class InventoryHandler
                 'message' => 'Stock update previewed.'
             ];
         }
+
+        $stockItem = $this->stockRegistry->getStockItemBySku($sku);
+        $stockItem->setQty($qty);
+        $stockItem->setIsInStock($isInStock);
+        $this->stockRegistry->updateStockItemBySku($sku, $stockItem);
 
         return [
             'success' => true,
